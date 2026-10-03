@@ -79,9 +79,8 @@ Where:
 
 128 = number of timesteps in each sequence
 6 = sensor features at each timestep
-
 This allows recurrent neural networks to learn patterns across time.
-🧹 Data Preparation
+## 🧹 Data Preparation
 
 The preprocessing workflow included:
 
@@ -107,7 +106,7 @@ Final sequence representation:
 Training set:   (4704, 128, 6)
 Validation set: (1177, 128, 6)
 Test set:       (2947, 128, 6)
-🧠 Model Architectures
+## 🧠 Model Architectures
 
 Four recurrent architectures were implemented and evaluated.
 
@@ -135,7 +134,7 @@ A Bidirectional LSTM was also evaluated.
 
 Instead of processing the sequence in only one direction, the model processes the sequence in both forward and backward directions before producing the final representation.
 
-📈 Model Comparison
+## 📈 Model Comparison
 
 The models were evaluated on the untouched test set.
 
@@ -147,7 +146,7 @@ BiLSTM	70.89%
 
 The BiLSTM achieved the highest test accuracy among the architectures evaluated in this project.
 
-🏆 Final Model
+## 🏆 Final Model
 
 The final model selected for this project is the Bidirectional LSTM (BiLSTM).
 
@@ -167,7 +166,7 @@ The model performs particularly well on the three walking activities.
 
 The stationary activities — Sitting, Standing, and Laying — are more difficult for the model to distinguish.
 
-🔍 Confusion Matrix
+## 🔍 Confusion Matrix
 
 The confusion matrix provides a detailed view of the final BiLSTM predictions.
 
@@ -185,7 +184,7 @@ For example, a significant number of Sitting and Standing samples were predicted
 
 This shows that the main challenge for the final model is distinguishing between similar stationary postures.
 
-📊 Final Confusion Matrix
+## 📊 Final Confusion Matrix
 [[455  15  25   0   0   1]
  [  7 442  20   0   0   2]
  [  1   4 415   0   0   0]
@@ -201,7 +200,7 @@ Class order:
 3 → SITTING
 4 → STANDING
 5 → LAYING
-🧪 Experimental Results
+## 🧪 Experimental Results
 
 The progression across the recurrent architectures was:
 
@@ -223,7 +222,7 @@ BiLSTM
 
 The experiments demonstrate how different recurrent architectures behave when applied to the same sequential sensor representation.
 
-🛠️ Technologies Used
+## 🛠️ Technologies Used
 Python
 NumPy
 Pandas
@@ -234,7 +233,7 @@ Matplotlib
 Seaborn
 Google Colab
 GitHub
-📁 Repository Structure
+## 📁 Repository Structure
 AI-MotionSense-HAR/
 │
 ├── AI_MotionSense_HAR.ipynb
@@ -247,7 +246,7 @@ AI-MotionSense-HAR/
 │   └── model_comparison.png
 │
 └── README.md
-Files
+## Files
 
 AI_MotionSense_HAR.ipynb
 
@@ -278,7 +277,7 @@ results/bilstm_confusion_matrix.png
 
 Confusion matrix for the final BiLSTM model.
 
-💡 Key Learning Outcomes
+##💡 Key Learning Outcomes
 
 Through this project, I learned how to:
 
@@ -294,7 +293,7 @@ Analyze model errors using confusion matrices.
 Avoid test-data leakage during preprocessing.
 Save and organize trained deep learning models.
 Build an end-to-end deep learning project.
-🚀 Future Improvements
+## 🚀 Future Improvements
 
 Possible future extensions include:
 
@@ -305,7 +304,7 @@ Experimenting with different sequence lengths.
 Testing additional recurrent architectures.
 Real-time activity prediction using smartphone sensor streams.
 Deploying the trained model for real-world inference.
-📚 Dataset Reference
+## 📚 Dataset Reference
 
 Anguita, D., Ghio, A., Oneto, L., Parra, X., & Reyes-Ortiz, J. L.
 
@@ -317,29 +316,8 @@ Dataset:
 
 https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones
 
-👩‍💻 Author
+##👩‍💻 Author
 
 Juhi Mishra
 
 BTech — Artificial Intelligence & Data Science
-
-
-### One small correction before you commit
-
-Your README says the **final model is BiLSTM**, which matches your actual experiment:
-
-**70.89% test accuracy.**
-
-Don't upload the raw UCI dataset to GitHub. Your notebook can document the dataset source, while the repository stays lightweight and clean.
-
-For the GitHub repository, the final structure should be:
-
-```text
-AI-MotionSense-HAR/
-├── AI_MotionSense_HAR.ipynb
-├── models/
-│   └── bilstm_har_model.keras
-├── results/
-│   ├── bilstm_confusion_matrix.png
-│   └── model_comparison.png
-└── README.md
