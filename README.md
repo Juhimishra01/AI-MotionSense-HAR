@@ -1,20 +1,18 @@
 # AI MotionSense — Human Activity Recognition
 
-Human Activity Recognition (HAR) using smartphone sensor data and recurrent neural networks.
+Human Activity Recognition (HAR) using smartphone sensor data with Recurrent Neural Networks.
 
-This project explores how sequential sensor data can be used to recognize human activities using **SimpleRNN, LSTM, GRU, and Bidirectional LSTM (BiLSTM)** models.
+This project explores how sequential smartphone sensor data can be used to recognize human activities using **SimpleRNN, LSTM, GRU, and Bidirectional LSTM (BiLSTM)** models.
 
 ---
 
 ## 📌 Project Overview
 
-Smartphones contain sensors such as accelerometers and gyroscopes that continuously capture motion information.
+Smartphones contain sensors such as accelerometers and gyroscopes that capture information about human movement.
 
-In this project, sensor measurements are treated as **time sequences** rather than independent tabular observations. Recurrent neural networks are then used to learn temporal patterns in these sequences and classify the corresponding human activity.
+In this project, sensor measurements are treated as **sequential data** rather than independent tabular observations. Recurrent neural networks are used to learn temporal patterns from these sequences and classify the corresponding human activity.
 
 The project uses the **UCI Human Activity Recognition Using Smartphones Dataset**.
-
-### Activities
 
 The model classifies six activities:
 
@@ -30,27 +28,26 @@ The model classifies six activities:
 ## 🎯 Objectives
 
 - Understand the difference between tabular and sequential data.
-- Convert smartphone sensor measurements into sequences suitable for RNN-based models.
+- Convert smartphone sensor measurements into sequences.
 - Understand how recurrent neural networks process temporal information.
 - Implement and compare:
   - SimpleRNN
   - LSTM
   - GRU
   - Bidirectional LSTM
-- Evaluate models using accuracy, precision, recall, F1-score, and confusion matrices.
-- Analyze where the final model performs well and where classification errors occur.
+- Evaluate the models using accuracy, precision, recall, F1-score, and confusion matrices.
+- Analyze the strengths and limitations of the final model.
+- Build a complete deep learning workflow for human activity recognition.
 
 ---
 
 ## 📊 Dataset
 
-The project uses the **UCI Human Activity Recognition Using Smartphones Dataset**.
+This project uses the **UCI Human Activity Recognition Using Smartphones Dataset**.
 
-Dataset source:
+The dataset contains smartphone sensor measurements collected while subjects performed six different activities.
 
-https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones
-
-The original dataset contains smartphone sensor measurements collected from subjects performing six different activities.
+### Selected Sensor Features
 
 For this project, six sensor signals were selected:
 
@@ -61,16 +58,20 @@ For this project, six sensor signals were selected:
 - Body Gyroscope Y
 - Body Gyroscope Z
 
+### Dataset Source
+
+UCI Machine Learning Repository:
+
+https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones
+
 ---
 
-## 🔄 Data Representation
+## 🔄 Sequence Representation
 
-Instead of treating each observation as an independent row, the sensor measurements were represented as sequences.
+Instead of treating every observation as an independent row, the sensor measurements were represented as sequences.
 
 Each sequence contains:
 
-```text
-128 timesteps × 6 features
 Therefore, the final model input has the shape:
 
 (samples, 128, 6)
@@ -79,8 +80,10 @@ Where:
 
 128 = number of timesteps in each sequence
 6 = sensor features at each timestep
+
 This allows recurrent neural networks to learn patterns across time.
-## 🧹 Data Preparation
+
+🧹 Data Preparation
 
 The preprocessing workflow included:
 
@@ -106,7 +109,7 @@ Final sequence representation:
 Training set:   (4704, 128, 6)
 Validation set: (1177, 128, 6)
 Test set:       (2947, 128, 6)
-## 🧠 Model Architectures
+🧠 Model Architectures
 
 Four recurrent architectures were implemented and evaluated.
 
@@ -134,7 +137,7 @@ A Bidirectional LSTM was also evaluated.
 
 Instead of processing the sequence in only one direction, the model processes the sequence in both forward and backward directions before producing the final representation.
 
-## 📈 Model Comparison
+📈 Model Comparison
 
 The models were evaluated on the untouched test set.
 
@@ -146,7 +149,7 @@ BiLSTM	70.89%
 
 The BiLSTM achieved the highest test accuracy among the architectures evaluated in this project.
 
-## 🏆 Final Model
+🏆 Final Model
 
 The final model selected for this project is the Bidirectional LSTM (BiLSTM).
 
@@ -166,7 +169,7 @@ The model performs particularly well on the three walking activities.
 
 The stationary activities — Sitting, Standing, and Laying — are more difficult for the model to distinguish.
 
-## 🔍 Confusion Matrix
+🔍 Confusion Matrix
 
 The confusion matrix provides a detailed view of the final BiLSTM predictions.
 
@@ -184,7 +187,7 @@ For example, a significant number of Sitting and Standing samples were predicted
 
 This shows that the main challenge for the final model is distinguishing between similar stationary postures.
 
-## 📊 Final Confusion Matrix
+📊 Final Confusion Matrix
 [[455  15  25   0   0   1]
  [  7 442  20   0   0   2]
  [  1   4 415   0   0   0]
@@ -200,7 +203,7 @@ Class order:
 3 → SITTING
 4 → STANDING
 5 → LAYING
-## 🧪 Experimental Results
+🧪 Experimental Results
 
 The progression across the recurrent architectures was:
 
@@ -222,7 +225,7 @@ BiLSTM
 
 The experiments demonstrate how different recurrent architectures behave when applied to the same sequential sensor representation.
 
-## 🛠️ Technologies Used
+🛠️ Technologies Used
 Python
 NumPy
 Pandas
@@ -233,7 +236,7 @@ Matplotlib
 Seaborn
 Google Colab
 GitHub
-## 📁 Repository Structure
+📁 Repository Structure
 AI-MotionSense-HAR/
 │
 ├── AI_MotionSense_HAR.ipynb
@@ -246,7 +249,7 @@ AI-MotionSense-HAR/
 │   └── model_comparison.png
 │
 └── README.md
-## Files
+Files
 
 AI_MotionSense_HAR.ipynb
 
@@ -277,7 +280,7 @@ results/bilstm_confusion_matrix.png
 
 Confusion matrix for the final BiLSTM model.
 
-##💡 Key Learning Outcomes
+💡 Key Learning Outcomes
 
 Through this project, I learned how to:
 
@@ -293,7 +296,7 @@ Analyze model errors using confusion matrices.
 Avoid test-data leakage during preprocessing.
 Save and organize trained deep learning models.
 Build an end-to-end deep learning project.
-## 🚀 Future Improvements
+🚀 Future Improvements
 
 Possible future extensions include:
 
@@ -304,7 +307,7 @@ Experimenting with different sequence lengths.
 Testing additional recurrent architectures.
 Real-time activity prediction using smartphone sensor streams.
 Deploying the trained model for real-world inference.
-## 📚 Dataset Reference
+📚 Dataset Reference
 
 Anguita, D., Ghio, A., Oneto, L., Parra, X., & Reyes-Ortiz, J. L.
 
@@ -316,8 +319,11 @@ Dataset:
 
 https://archive.ics.uci.edu/dataset/240/human+activity+recognition+using+smartphones
 
-##👩‍💻 Author
+👩‍💻 Author
 
 Juhi Mishra
 
 BTech — Artificial Intelligence & Data Science
+
+```text
+128 timesteps × 6 features
